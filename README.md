@@ -43,17 +43,19 @@ Av ≈ -7.5 V/V
 ---
 
 ## Circuit Diagram
-![Circuit](images/Circuit Diagram With Capacitor.png)
+<img width="1366" height="768" alt="Circuit Diagram With Capacitor" src="https://github.com/user-attachments/assets/fac05edf-4c35-4a07-9abd-c271ff4a7c09" />
+
 
 ---
 
 ## DC Operating Point
-![DC](DC operating point.png)
+<img width="1366" height="768" alt="DC operating point" src="https://github.com/user-attachments/assets/d5e2227b-bc03-4719-a08e-16eb6311bc56" />
 
 ---
 
 ## AC Analysis
-![AC](AC Analysis With Capacitor.png)
+<img width="1366" height="768" alt="trasient analysis both" src="https://github.com/user-attachments/assets/b7ac2ecf-678a-4cc5-8184-8d2ee7bb8a6e" />
+
 
 ---
 
