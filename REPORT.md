@@ -54,7 +54,11 @@ Av ≈ -2.221 V/V
 ---
 
 ## AC Analysis
-<img width="1366" height="768" alt="trasient analysis both" src="https://github.com/user-attachments/assets/b7ac2ecf-678a-4cc5-8184-8d2ee7bb8a6e" />
+<img width="1366" height="768" alt="AC Analysis With Capacitor" src="https://github.com/user-attachments/assets/160f4892-b4b5-43a9-9b85-409b135145b8" />
+
+## Transient Analysis
+<img width="1366" height="768" alt="trasient analysis both" src="https://github.com/user-attachments/assets/5f022073-a2cf-4f44-9155-f3627e5865f7" />
+
 
 
 ---
