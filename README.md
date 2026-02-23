@@ -3,8 +3,8 @@
 ## Aim
 To design and analyze a Common Source (CS) amplifier using tsmc018 technology with:
 - Power Budget = 0.5mW
-- VDD = 1.5V
-- Load Capacitance = 1pF
+- VDD = 1.2V
+- Load Capacitance = 0.5pF
 
 ---
 
@@ -26,7 +26,7 @@ The CS amplifier provides:
 ### Power Equation
 P = VDD × ID
 
-ID = 0.5mW / 1.5V  
+ID = 0.5mW / 1.2V  
 ID = 333µA
 
 ### Transconductance
