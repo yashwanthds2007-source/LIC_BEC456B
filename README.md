@@ -1,23 +1,61 @@
-Experiment 01: Common Source (CS) Amplifier Design and Analysis
-Overview
-This repository contains the complete design, theoretical analysis, and LTspice simulation for a Common Source (CS) Amplifier. The experiment aims to design the amplifier within a specified power budget, verify its DC operating point, and evaluate its transient and AC responses.
+# Experiment 1: Common Source (CS) Amplifier
 
-Objectives
-Design Validation: Calculate appropriate values for component parameters (like 
-R
-D
- and MOSFET width 
-W
-) to meet a specific power budget (
-0.333
- mA
-).
-DC Analysis: Verify that the MOSFET operates in the saturation region.
-Transient & AC Analysis: Determine the practical voltage gain and bandwidth (identifying the high cut-off frequency, 
-f
-H
-) and compare them against theoretical calculations.
-Repository Structure
-EXP-01-CS-Amplifier.asc: The main LTspice schematic file containing the circuit design.
-report.md: The comprehensive lab report detailing the mathematical verification, power budget calculations, gain validation, and comparison between theoretical and simulated results.
-images/: A directory containing all necessary simulation screenshots, including the circuit diagram, DC operating point, VTC curve, transient response, and AC analysis graphs.
+## Aim
+To design and analyze a Common Source (CS) amplifier using tsmc018 technology with:
+- Power Budget = 0.5mW
+- VDD = 1.5V
+- Load Capacitance = 1pF
+
+---
+
+## Theory
+
+The MOSFET acts as an amplifier when biased in saturation region:
+
+V_DS ≥ V_OV
+
+The CS amplifier provides:
+- High voltage gain
+- High input impedance
+- 180° phase shift
+
+---
+
+## Design Calculations
+
+### Power Equation
+P = VDD × ID
+
+ID = 0.5mW / 1.5V  
+ID = 333µA
+
+### Transconductance
+gm = 2ID / VOV  
+gm = 3.33mS (assuming VOV = 0.2V)
+
+### Drain Resistor
+RD = 2.25kΩ
+
+### Gain
+Av = -gmRD  
+Av ≈ -7.5 V/V
+
+---
+
+## Circuit Diagram
+![Circuit](images/Circuit Diagram With Capacitor.png)
+
+---
+
+## DC Operating Point
+![DC](DC operating point.png)
+
+---
+
+## AC Analysis
+![AC](AC Analysis With Capacitor.png)
+
+---
+
+## Conclusion
+The CS amplifier was successfully designed under 0.5mW power constraint with gain ≈ -7.5 V/V.
