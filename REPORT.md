@@ -34,11 +34,11 @@ gm = 2ID / VOV
 gm = 3.33mS (assuming VOV = 0.2V)
 
 ### Drain Resistor
-RD = 2.25kΩ
+RD = 3k
 
 ### Gain
 Av = -gmRD  
-Av ≈ -7.5 V/V
+Av ≈ -2.221 V/V
 
 ---
 
