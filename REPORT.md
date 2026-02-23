@@ -64,4 +64,4 @@ Av ≈ -2.221 V/V
 ---
 
 ## Conclusion
-The CS amplifier was successfully designed under 0.5mW power constraint with gain ≈ -7.5 V/V.
+The CS amplifier was successfully designed under 0.5mW power constraint with gain ≈ -2.221 V/V.
