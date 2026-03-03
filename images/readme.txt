@@ -1,1 +1,1 @@
-images/readme.txt
+EXPERIMENT2/readme.txt
