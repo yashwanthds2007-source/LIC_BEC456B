@@ -89,7 +89,8 @@ Thus, the circuit converts a differential input voltage into a differential outp
 
 ## Circuit Diagram
 
-![Circuit 1](Results/exp4a_circuit.png)
+<img width="1029" height="781" alt="image" src="https://github.com/user-attachments/assets/086d748f-befc-4b50-8182-a455590d91bb" />
+
 
 ## 1.2 Design Calculations
 
@@ -429,7 +430,8 @@ Thus, the deviation from the theoretical width arises due to non-ideal device be
 
 ## DC Analysis
 
-![DC Analysis](Results/exp4a_dc.png)
+<img width="1785" height="810" alt="image" src="https://github.com/user-attachments/assets/9b6d9a2f-2082-47a9-9059-5d918d20918c" />
+
 
 The DC operating point confirms that the output voltage and source voltage is near the designed bias value, ensuring proper saturation operation.
 
@@ -655,7 +657,8 @@ $$
 V_{id} = 100mV < 0.48V
 $$
 
-![Circuit 2](Results/exp4a_transient1.png)
+<img width="1916" height="849" alt="image" src="https://github.com/user-attachments/assets/5aee6e4f-5178-4b4b-bce0-e774338e362f" />
+
 
 Observation:
 
@@ -672,7 +675,8 @@ $$
 V_{id} = 600mV > 0.48V
 $$
 
-![Circuit 2](Results/exp4a_transient2.png)
+<img width="1919" height="847" alt="image" src="https://github.com/user-attachments/assets/cac11637-fa5a-434c-8b67-cbd5b71ddf0a" />
+
 
 Observation:
 
