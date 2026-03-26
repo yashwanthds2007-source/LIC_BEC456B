@@ -1,13 +1,5 @@
-BEC456B_LIC_4NI25EC426
+This is the Github account of Yashawanth D S bearing USN 4NI25EC426 of 4th Semester 'C' Section of ECE Department.
 
+This Repository consists of all the Github files of the Linear Integrated Circuits Lab (BEC456B) Course.
 
-
-
-This repository contains Linear Integrated Circuits (LIC) lab experiments including circuit diagrams, design calculations, simulation results and observations. Experiments:
-
-Experiment 1: Common Source Amplifier
-
-
-
-
-Click on the respective experiment folder to view detailed documentation.
+To access the files, please go through the branches where the specific file locations for each experiment is created
