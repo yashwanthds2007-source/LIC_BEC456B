@@ -722,4 +722,347 @@ $$
 
 the circuit transitions from linear amplification to non-linear behavior due to unequal current distribution and transistor cutoff.
 
+##
+
+## Theoretical and Simulated Gain
+
+<img width="1919" height="426" alt="image" src="https://github.com/user-attachments/assets/9a312e32-b816-49c6-a570-cbb3880cc64a" />
+
+
+The output waveform is amplified and inverted.
+
+### Simulated Gain
+
+Input signal parameters:
+
+- Type: Sine wave  
+- Frequency = 1kHz  
+- Amplitude = 50mV (applied differentially) 
+- DC Offset = 0V
+
+Measured peak-to-peak values:
+
+$$
+V_{in(p-p)} = 50mV - ( - 50mV ) = 100mV
+$$
+
+$$
+V_{out(p-p)} = 302mV - ( - 302mV ) = 604mV
+$$
+
+Voltage gain:
+
+$$
+A_v = \frac{V_{out(p-p)}}{V_{in(p-p)}}
+$$
+
+$$
+A_v = \frac{604 \times 10^{-3}}{100 \times 10^{-3}}
+$$
+
+$$
+A_v = 6.04
+$$
+
+Gain in dB:
+
+$$
+A_v(dB) = 20\log_{10}(6.04)
+$$
+
+$$
+A_v(dB) = 15.62dB
+$$
+
+##
+
+### Theoretical Gain
+
+Assume channel length modulation:
+
+$$
+\lambda = 0.1 \, V^{-1}
+$$
+
+### Output Resistance
+
+The output resistance of each MOSFET is:
+
+$$
+r_o = \frac{1}{\lambda I_D}
+$$
+
+Substituting:
+
+$$
+I_D = 0.5mA = 0.5 \times 10^{-3}A
+$$
+
+$$
+r_o = \frac{1}{0.1 \times 0.5 \times 10^{-3}}
+$$
+
+$$
+r_o = 20k\Omega
+$$
+
+### Effective Output Resistance
+
+Since two transistors are present:
+
+$$
+r_{o,eff} = r_{o1} \parallel r_{o2}
+$$
+
+$$
+r_{o,eff} = 20k \parallel 20k
+$$
+
+$$
+r_{o,eff} = 10k\Omega
+$$
+
+### Transconductance
+
+$$
+g_m = \frac{2 I_D}{V_{OV}}
+$$
+
+$$
+g_m = \frac{2 \times 0.5 \times 10^{-3}}{0.34}
+$$
+
+$$
+g_m \approx 2.94mS
+$$
+
+### Total Output Resistance
+
+The effective load seen at the output is:
+
+$$
+R_{out} = R_D \parallel r_{o,eff}
+$$
+
+$$
+R_{out} = 1.8k \parallel 10k
+$$
+
+$$
+R_{out} \approx 1.53k\Omega
+$$
+
+### Differential Gain
+
+$$
+A_d = g_m R_{out}
+$$
+
+$$
+A_d = 2.94 \times 10^{-3} \times 1.53 \times 10^3
+$$
+
+$$
+A_d \approx 4.5
+$$
+
+### Gain in dB
+
+$$
+A_d(dB) = 20 \log_{10}(4.5)
+$$
+
+$$
+A_d(dB) \approx 13.06dB
+$$
+
+##
+
+## Reason for Difference Between Theoretical and Simulated Gain
+
+A deviation is observed between the theoretical and simulated gain values. This difference arises due to the simplifying assumptions made in analytical calculations and the inclusion of non-ideal effects in simulation.
+
+### Reasons for Deviation
+
+ ### 1. Channel Length Modulation
+
+In theoretical calculations, channel length modulation is often neglected or approximated.  
+However, in simulation, the MOSFET model includes a more accurate value of $\lambda$, which affects the output resistance $r_o$ and hence the gain.
+
+ ### 2. Finite Output Resistance
+
+The theoretical gain assumes ideal conditions, whereas in simulation, the finite output resistance of MOSFETs modifies the effective load resistance:
+
+$$
+R_{out} = R_D \parallel r_o
+$$
+
+This changes the overall gain.
+
+ ### 3. Mobility Degradation and Short Channel Effects
+
+In practical MOSFET models, carrier mobility reduces with increasing electric field.  
+This reduces the effective transconductance $g_m$, which directly affects gain.
+
+ ### 4. Variation in Overdrive Voltage ($V_{OV}$)
+
+Theoretical calculations assume a fixed $V_{OV}$, whereas in simulation, the operating point may slightly shift, causing variations in $g_m$ and current.
+
+ ### 5. Parasitic Capacitances
+
+Simulation includes intrinsic parasitic capacitances, which influence the dynamic response and slightly affect the measured gain, especially in transient analysis.
+
+ ### 6. Measurement Method
+
+In simulation, gain is obtained from waveform measurements, which may include small inaccuracies due to scaling, cursor placement, or non-ideal waveform symmetry.
+
+### Conclusion
+
+Thus, the difference between theoretical and simulated gain is expected and arises due to practical device behavior and more accurate modeling in simulation compared to simplified analytical expressions.
+
+---
+
 ## 1.4 AC Analysis
+
+<img width="1919" height="422" alt="image" src="https://github.com/user-attachments/assets/df4106d7-2959-47c3-8738-4c228ed5e547" />
+
+
+In AC analysis, the frequency response of the Differential Amplifier is observed.
+
+The midband gain is obtained from the flat region of the Bode plot.  
+The bandwidth is defined as the frequency range between the lower cutoff frequency ($f_L$) and upper cutoff frequency ($f_H$), measured at the −3 dB points.
+
+##
+
+### Midband gain:
+
+From AC simulation:
+
+$$
+A_v = 9.871 \text{ dB}
+$$
+
+The −3 dB gain is:
+
+$$
+A_v - 3 = 9.871 - 3
+$$
+
+$$
+A_v - 3 = 6.871 \text{ dB}
+$$
+
+##
+
+### Cutoff Frequencies
+
+Lower cutoff frequency:
+
+$$
+f_L = 0
+$$
+
+Upper cutoff frequency:
+
+$$
+f_H = 4.819 \text{ MHz}
+$$
+
+##
+
+### Bandwidth
+
+Bandwidth is defined as:
+
+$$
+BW = f_H - f_L
+$$
+
+$$
+BW = 4.819 - 0
+$$
+
+$$
+BW = 4.819 \text{ MHz}
+$$
+
+---
+
+### 1.5 Unity Gain Bandwidth (UGB)
+
+Since the 0 dB crossing is not visible in the plot, UGB cannot be directly measured.
+
+However, it can be approximated as:
+
+$$
+UGB = A_v \times BW
+$$
+
+$$
+A_v = 6.04
+$$
+
+$$
+UGB = 6.04 \times 4.819 \text{ MHz}
+$$
+
+$$
+UGB = 29.106 \text{ MHz}
+$$
+
+---
+
+### Note
+
+First-order theoretical analysis assumes ideal MOSFET operation in saturation and neglects higher-order effects such as channel length modulation, mobility degradation, and parasitic capacitances. These non-ideal effects are included in simulation, leading to differences between theoretical and simulated results.
+
+## Comparison of Results
+
+| Parameter | Theoretical | Simulated |
+|------------|-------------|-----------|
+| Voltage Gain ($A_v$) | 4.5 V/V | 6.04 V/V |
+| Gain (dB) | 14.46 dB | 15.62 dB |
+
+The deviation between theoretical and simulated gain is mainly due to simplified first-order assumptions used in analytical calculations and the inclusion of non-ideal MOSFET effects such as channel length modulation, mobility degradation, and parasitic capacitances in simulation.
+
+---
+
+## Inference
+
+The MOS differential amplifier with resistive load was successfully designed and analyzed while satisfying the given design constraints:
+
+Power consumption ≤ 1.8mW  
+VDD = 0.9V  
+VSS = -0.9V  
+Vocm = 0V  
+
+The tail current was selected as 1mA to ensure operation within the power limit (1.8mW). Under balanced conditions, the current splits equally between the two transistors:
+
+$$
+I_{D1} = I_{D2} = 0.5mA
+$$
+
+The bias point was carefully chosen such that both NMOS transistors operate in saturation, ensuring proper differential amplification. The source node voltage was adjusted to match the required tail voltage:
+
+$$
+V_S \approx -0.7V
+$$
+
+by tuning the transistor width during simulation.
+
+Theoretical and simulated results are reasonably consistent:
+
+Theoretical gain ≈ 5.29 V/V (14.46 dB)  
+Simulated gain ≈ 6.04 V/V (15.62 dB)  
+Simulated bandwidth ≈ 4.819 MHz  
+Unity Gain Bandwidth ≈ 15.03 MHz  
+
+The deviation between theoretical and simulated gain arises due to second-order effects such as channel length modulation, mobility degradation, and parasitic capacitances included in the MOSFET model. Additionally, the theoretical analysis assumes ideal conditions and neglects the finite output resistance of transistors.
+
+From the AC analysis, it is observed that the amplifier exhibits a flat midband gain followed by a roll-off at higher frequencies due to parasitic capacitances, which introduce a dominant pole and limit the bandwidth.
+
+The differential amplifier provides good linear amplification for small differential input signals. However, when the input differential voltage exceeds the linear range, the circuit enters non-linear operation, resulting in distortion.
+
+Hence, the designed differential amplifier satisfies the required specifications and demonstrates proper biasing, expected gain characteristics, and acceptable frequency response behavior.
+
+---
