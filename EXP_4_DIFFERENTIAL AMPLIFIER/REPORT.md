@@ -2253,3 +2253,5 @@ From AC analysis, the amplifier shows a flat midband gain followed by a roll-off
 The differential amplifier provides linear amplification for small differential inputs. However, for large input signals, current steering causes one transistor to turn OFF, leading to distortion and non-linear behavior.
 
 Hence, the designed differential amplifier demonstrates correct biasing and operation, but highlights the impact of non-ideal device behavior on gain when using active loads and current sources.
+-----
+
