@@ -2255,3 +2255,1107 @@ The differential amplifier provides linear amplification for small differential 
 Hence, the designed differential amplifier demonstrates correct biasing and operation, but highlights the impact of non-ideal device behavior on gain when using active loads and current sources.
 -----
 
+
+
+
+# Experiment 4  
+## Circuit 3 – CMOS Differential Amplifier (DC Analysis & Saturation Conditions)
+<img width="1079" height="665" alt="image" src="https://github.com/user-attachments/assets/c36c9b83-c1c1-4db0-80d5-73bc9a80cd4a" />
+
+---
+
+## Aim
+
+To analyze the DC operating conditions of a CMOS differential amplifier and verify the saturation region of all MOSFETs in Circuit 3.
+
+---
+
+## Circuit Description
+
+The circuit consists of a CMOS differential amplifier with:
+- NMOS differential pair (M1, M2)
+- PMOS active load (M3, M4)
+- NMOS tail current source (M5)
+
+The circuit operates with symmetric inputs and fixed biasing conditions.
+
+---
+
+## Given Parameters
+
+### Supply Voltages
+- VDD = 0.9 V  
+- VSS = -0.35 V  
+
+---
+
+### Input Signals
+- Vin1 = SINE(0, 10mV, 1kHz), AC = 1  
+- Vin2 = SINE(0, -10mV, 1kHz), AC = 180°  
+
+Differential input:
+Vid = Vin1 - Vin2 = 20 mV  
+
+---
+
+### DC Node Voltages
+- Vout1 = 0.3 V  
+- Vout2 = 0.3 V  
+- Vp (tail node) = -0.7 V (fixed)
+
+---
+
+### Bias Voltage
+- Gate voltage of M5:
+  Vg5 = 0.366 V  
+
+---
+
+### Technology
+- Model: tsmc018.lib  
+- Threshold voltage:
+  Vt ≈ 0.366 V  
+
+---
+
+## MOSFET Types
+
+- M1, M2, M5 → NMOS  
+- M3, M4 → PMOS  
+
+---
+
+## Saturation Conditions
+
+### NMOS
+VDS ≥ VGS − Vt  
+
+### PMOS
+VSD ≥ VSG − |Vt|  
+
+---
+
+## DC Analysis and Region Verification
+
+---
+
+### M1 (NMOS)
+
+Vg1 = 0 V  
+Vs1 = Vp = -0.7 V  
+
+VGS1 = 0 − (-0.7) = 0.7 V  
+
+Vd1 = 0.3 V  
+
+VDS1 = 0.3 − (-0.7) = 1.0 V  
+
+Condition:
+VDS1 ≥ VGS1 − Vt  
+1.0 ≥ 0.7 − 0.366 = 0.334  
+
+M1 operates in saturation region  
+
+---
+
+### M2 (NMOS)
+
+Vg2 = 0 V  
+Vs2 = -0.7 V  
+
+VGS2 = 0.7 V  
+
+Vd2 = 0.3 V  
+
+VDS2 = 1.0 V  
+
+Condition satisfied  
+
+M2 operates in saturation region  
+
+---
+
+### M3 (PMOS)
+
+Vs3 = 0.9 V  
+Vd3 = 0.3 V  
+
+VSD3 = 0.9 − 0.3 = 0.6 V  
+
+Vg3 = 0.3 V  
+
+VSG3 = 0.9 − 0.3 = 0.6 V  
+
+Condition:
+VSD3 ≥ VSG3 − |Vt|  
+0.6 ≥ 0.6 − 0.366 = 0.234  
+
+M3 operates in saturation region  
+
+---
+
+### M4 (PMOS)
+
+Vs4 = 0.9 V  
+Vd4 = 0.3 V  
+
+VSD4 = 0.6 V  
+
+Vg4 = 0.3 V  
+
+VSG4 = 0.6 V  
+
+Condition satisfied  
+
+M4 operates in saturation region  
+
+---
+
+### M5 (NMOS)
+
+Vg5 = 0.366 V  
+Vs5 = -0.35 V  
+
+VGS5 = 0.366 − (-0.35) = 0.716 V  
+
+Vd5 = -0.7 V  
+
+VDS5 = -0.7 − (-0.35) = -0.35 V  
+
+|VDS5| = 0.35 V  
+
+Condition:
+VDS5 ≥ VGS5 − Vt  
+0.35 ≥ 0.716 − 0.366 = 0.35  
+
+M5 operates at the boundary of saturation region  
+
+---
+
+
+## DC Analysis (Operating Point)
+
+The DC operating point analysis provides the node voltages and drain currents of the CMOS differential amplifier.
+<img width="853" height="627" alt="image" src="https://github.com/user-attachments/assets/2992dc79-1ea6-4a53-b3e0-66c8f034bc5f" />
+
+---
+
+### Node Voltages
+
+- VDD node = 0.9 V  
+- Ground reference = 0 V  
+- Negative supply ≈ -0.9 V  
+
+- Vout1 = 0.8876 V  
+- Vout2 = 0.8876 V  
+
+- Tail node:
+  Vp = -0.7218 V  
+
+- Bias node:
+  Vg5 ≈ -0.37 V  
+
+---
+
+### Currents
+
+- Tail current (through M5):
+  Id(M5) = 1.0487 mA  
+
+- Differential pair currents:
+  Id(M1) = 0.5243 mA  
+  Id(M2) = 0.5243 mA  
+
+- PMOS load currents:
+  Id(M3) = -0.5243 mA  
+  Id(M4) = -0.5243 mA  
+
+---
+
+### Observations
+
+- The total tail current splits equally:
+  Id(M1) ≈ Id(M2)
+
+- Current matching confirms symmetry of the differential pair.
+
+- PMOS currents are equal and opposite to NMOS currents, ensuring proper load operation.
+
+- Output voltages are equal:
+  Vout1 = Vout2  
+  → Indicates zero differential input condition.
+
+---
+
+### Voltage Verification
+
+For M1 and M2:
+
+VGS ≈ 0 − (-0.7218) = 0.7218 V  
+
+VDS ≈ 0.8876 − (-0.7218) = 1.6094 V  
+
+---
+
+For M5:
+
+VGS5 = Vg5 − Vs  
+= (-0.37) − (-0.9)  
+= 0.53 V  
+
+VDS5 = Vp − Vs  
+= (-0.7218) − (-0.9)  
+= 0.1782 V  
+
+---
+
+### Current Consistency Check
+
+Id(M5) ≈ Id(M1) + Id(M2)  
+1.0487 mA ≈ 0.5243 + 0.5243 mA  
+
+
+
+---
+
+
+## Transient Analysis
+
+The transient analysis is performed to observe the time-domain response of the CMOS differential amplifier for a sinusoidal differential input.
+
+---
+<img width="1899" height="428" alt="image" src="https://github.com/user-attachments/assets/1d7edbd6-d2d3-458c-bc75-6ce0eacb78d2" />
+<img width="1900" height="450" alt="image" src="https://github.com/user-attachments/assets/9f59e6e1-cff8-4c79-b1eb-27df99c727e1" />
+<img width="1898" height="387" alt="image" src="https://github.com/user-attachments/assets/fe0d7791-d13d-47cb-b1f1-3e09705dcd61" />
+
+### Simulation Setup
+
+- Analysis type:
+  .tran 5 ms  
+
+- Input signals:
+  Vin1 = SINE(0, 10 mV, 1 kHz)  
+  Vin2 = SINE(0, -10 mV, 1 kHz)  
+
+- Differential input:
+  Vid = 20 mV peak-to-peak  
+
+---
+
+### Observed Waveforms
+
+---
+
+#### Input Signal
+
+- The input waveform is a sinusoidal signal with:
+  - Amplitude ≈ ±10 mV  
+  - Frequency = 1 kHz  
+
+- The signal is centered around 0 V.
+
+---
+
+#### Output Voltage (Vout1)
+
+- The output waveform is sinusoidal in nature.  
+- DC level:
+  Vout1 ≈ 0.8876 V  
+
+- Small signal variation is observed around the DC operating point.
+
+- Output amplitude is significantly smaller compared to input variation due to biasing conditions.
+
+---
+
+#### Combined Observation
+
+- Input and output waveforms maintain sinusoidal shape.  
+- No visible distortion is present.  
+- Output follows the input variation, indicating linear operation in this region.  
+
+---
+
+### Key Parameters from Waveform
+
+- Input amplitude ≈ 10 mV  
+- Output DC level ≈ 0.8876 V  
+- Output signal shows small variation around DC level  
+
+---
+
+
+
+
+
+
+
+## AC Analysis
+
+The AC analysis is performed to determine the frequency response, voltage gain, bandwidth, and gain-bandwidth product of the CMOS differential amplifier.
+
+---
+<img width="1919" height="486" alt="image" src="https://github.com/user-attachments/assets/a2fb9fb8-4477-46cb-947c-80f569511f34" />
+
+## Simulation Setup
+
+- Analysis command:
+  .ac dec 100 100 100G  
+
+- Input:
+  AC magnitude = 1 V  
+
+- Output node:
+  Vout1  
+
+---
+
+## Theoretical Analysis
+
+### Differential Gain Formula
+
+For a MOS differential amplifier with active load:
+
+Ad = gm × Rout  
+
+Where:
+- gm = transconductance  
+- Rout = ro_n || ro_p  
+
+This is the standard gain relation:
+Ad ≈ gm × ro :contentReference[oaicite:0]{index=0}  
+
+---
+
+### Transconductance (gm)
+
+gm = μnCox × (W/L) × Vov  
+
+OR
+
+gm = 2Id / Vov  
+
+---
+
+### Given Parameters
+
+- μnCox = 235 μA/V²  
+- L = 480 nm  
+- Vt = 0.366 V  
+
+From DC analysis:
+- Id ≈ 0.524 mA  
+
+---
+
+### Step 1: Overdrive Voltage
+
+Vov = VGS − Vt  
+
+From DC:
+VGS ≈ 0.72 V  
+
+Vov = 0.72 − 0.366 = 0.354 V  
+
+---
+
+### Step 2: gm Calculation
+
+gm = 2Id / Vov  
+
+gm = 2 × 0.524 mA / 0.354  
+
+gm ≈ 2.96 mS  
+
+---
+
+### Step 3: Output Resistance
+
+ro ≈ 1 / (λId)  
+
+Assuming:
+λ ≈ 0.1 V⁻¹ (typical for 180nm)
+
+ro ≈ 1 / (0.1 × 0.524 mA)  
+ro ≈ 19.08 kΩ  
+
+---
+
+### Step 4: Gain Calculation
+
+Rout = ro || ro ≈ ro/2  
+
+Rout ≈ 9.5 kΩ  
+
+Ad = gm × Rout  
+
+Ad = 2.96 mS × 9.5 kΩ  
+
+Ad ≈ 28.1 V/V  
+
+---
+
+### Step 5: Gain in dB
+
+Ad(dB) = 20 log(28.1)  
+
+Ad ≈ 28.97 dB  
+
+---
+
+## Practical Results (From Graph)
+
+From AC plot:
+
+- Gain ≈ -20 dB  
+- Bandwidth ≈ ~1 GHz  
+- Gain decreases after high frequency  
+
+---
+
+## Conversion
+
+Gain (linear):
+
+Av = 10^(−20/20)  
+
+Av ≈ 0.1 V/V  
+
+---
+
+## Comparison
+
+| Parameter | Theoretical | Practical |
+|----------|------------|----------|
+| Gain (V/V) | 28.1 | 0.1 |
+| Gain (dB) | 28.97 dB | -20 dB |
+
+---
+
+## Reason for Difference
+
+- M5 not fully in saturation  
+- Low output resistance  
+- Channel length modulation effect  
+- Improper biasing reduces gain  
+- Single-ended output reduces effective gain  
+
+---
+
+## Frequency Response
+
+- Flat region → low-frequency gain  
+- Roll-off → due to parasitic capacitances  
+- Phase shift increases at high frequency  
+
+---
+
+
+
+
+
+## Transient Analysis for Vid > √2 Vov (Nonlinear Region)
+
+---
+<img width="1912" height="387" alt="image" src="https://github.com/user-attachments/assets/acf0038d-129a-427b-ad7b-a1197327c18b" />
+
+### Condition
+
+The differential input applied satisfies:
+
+Vid > √2 Vov  
+
+Where:
+√2 Vov ≈ 0.50 V  
+
+---
+
+### Observed Output Behavior
+
+- The output waveform is no longer purely sinusoidal.  
+- The waveform shows:
+  - Flattened peaks (clipping at top)
+  - Sharp transitions
+  - Asymmetry in rising and falling edges  
+
+- Output swings between:
+  - Upper limit ≈ 0.9 V  
+  - Lower limit ≈ 0.88 V  
+
+---
+
+### Justification
+
+When Vid exceeds √2 Vov:
+
+- One NMOS transistor (M1 or M2) enters **strong conduction**  
+- The other transistor enters **cutoff region**  
+
+As a result:
+
+- Tail current is no longer shared equally  
+- Entire current flows through only one branch  
+- Differential pair behaves like a **switch rather than amplifier**
+
+---
+
+### Effect on Output
+
+- Output node connected to ON transistor:
+  - Pulled strongly → saturation level  
+
+- Output node connected to OFF transistor:
+  - No current → remains near supply  
+
+This causes:
+
+- Signal clipping  
+- Loss of linearity  
+- Distorted waveform  
+
+---
+
+### Key Observation
+
+- The amplifier no longer operates in small-signal region  
+- It behaves as a **large-signal nonlinear system**  
+
+---
+
+### Physical Interpretation
+
+- For small Vid:
+  current splits smoothly → linear output  
+
+- For large Vid:
+  current fully steers → switching action  
+
+---
+
+
+
+
+
+
+## Transient Analysis for Vid < √2 Vov (Linear Region)
+
+---
+<img width="1913" height="423" alt="image" src="https://github.com/user-attachments/assets/60ae9989-fada-40ea-98f2-6c3299411a42" />
+
+### Condition
+
+The applied differential input satisfies:
+
+Vid < √2 Vov  
+
+Where:
+√2 Vov ≈ 0.50 V  
+
+In this case:
+Vid = 20 mV << 0.50 V  
+
+---
+
+### Observed Output Behavior
+
+- The output waveform is **purely sinusoidal**  
+- No distortion or clipping is observed  
+- The signal is centered around DC level (~0.8876 V)  
+- Output variation is small and smooth  
+
+---
+
+### Justification
+
+When Vid is less than √2 Vov:
+
+- Both NMOS transistors (M1 and M2) operate in **saturation region**  
+- Tail current is **evenly shared** between the two branches  
+- Current changes **linearly** with input voltage  
+
+---
+
+### Effect on Output
+
+- Output voltage varies proportionally with input  
+- No abrupt switching occurs  
+- Amplifier behaves as a **small-signal linear system**
+
+---
+
+### Key Observation
+
+- No clipping or distortion  
+- Symmetrical waveform  
+- Smooth transitions  
+
+---
+
+### Physical Interpretation
+
+- Differential pair operates in **small-signal region**  
+- Current division follows linear relation:
+  Id1 ≈ Id/2 + (gm × Vid)/2  
+  Id2 ≈ Id/2 − (gm × Vid)/2  
+
+---
+
+
+
+
+
+
+
+## Calculation of Common Mode Voltage Range
+
+---
+
+### Given
+
+VDD = 0.9 V  
+VSS = -0.35 V  
+VT = 0.366 V  
+
+From DC analysis:  
+Vp ≈ -0.7218 V  
+
+---
+
+### Step 1: Calculate VGS
+
+VGS = VCM − Vp  
+
+At bias point (from DC):
+
+VGS ≈ 0.72 V  
+
+---
+
+### Step 2: Overdrive Voltage
+
+VOV = VGS − VT  
+
+VOV = 0.72 − 0.366  
+
+VOV ≈ 0.354 V  
+
+---
+
+## Minimum Common Mode Voltage (VCM_min)
+
+Condition:
+M1, M2 must remain ON and in saturation  
+
+So,
+
+VGS ≥ VT  
+
+VCM − Vp ≥ VT  
+
+VCM ≥ Vp + VT  
+
+Substitute:
+
+VCM_min = -0.7218 + 0.366  
+
+VCM_min ≈ -0.3558 V  
+
+---
+
+## Maximum Common Mode Voltage (VCM_max)
+
+Condition:
+M1, M2 must remain in saturation  
+
+VDS ≥ VOV  
+
+Vout − Vp ≥ VOV  
+
+Using DC value:
+
+Vout ≈ 0.8876 V  
+
+Check:
+
+0.8876 − (-0.7218) = 1.6094 V ✔ (satisfied)
+
+---
+
+Now PMOS condition limits VCM:
+
+For M3/M4:
+
+VSD ≥ VOV  
+
+VDD − Vout ≥ VOV  
+
+0.9 − 0.8876 = 0.0124 V  
+
+But,
+
+VOV ≈ 0.354 V  
+
+0.0124 < 0.354  
+
+---
+
+Thus PMOS is near boundary, so:
+
+VCM_max ≈ Vout − VOV  
+
+VCM_max ≈ 0.8876 − 0.354  
+
+VCM_max ≈ 0.5336 V  
+
+---
+
+## Final Values
+
+VCM_min ≈ -0.356 V  
+
+VCM_max ≈ 0.534 V  
+
+---
+
+
+
+
+
+
+## Transient Analysis at VCM(min)
+<img width="1916" height="887" alt="image" src="https://github.com/user-attachments/assets/6e2be445-d3ba-400a-8cda-35e307fcc97e" />
+
+---
+
+### Condition
+
+The input common-mode voltage is set to its minimum value:
+
+VCM(min) ≈ -0.36 V  
+
+---
+
+### Observed Output Behavior
+
+- Output waveform is **sinusoidal**  
+- Signal is centered near upper supply (~0.9 V)  
+- Very **small amplitude variation** is observed  
+- No clipping or distortion  
+
+---
+
+### Justification
+
+At VCM(min):
+
+- Gate voltage of NMOS transistors (M1, M2) is just sufficient to keep them ON  
+- Condition:
+  VGS ≈ VT  
+
+- Transistors operate at the **edge of conduction**
+
+---
+
+### Effect on Circuit Operation
+
+- Drain current is **very small**  
+- Transconductance (gm) is low  
+- Gain of the amplifier is reduced  
+
+---
+
+### Output Behavior Explanation
+
+- Since current is very small:
+  - Voltage drop across PMOS load is minimal  
+  - Output node remains close to VDD  
+
+- Only small variation is seen due to weak conduction  
+
+---
+
+### Key Observation
+
+- Circuit is still operating but at **minimum bias condition**  
+- Amplification is weak  
+- Output swing is very limited  
+
+---
+
+### Physical Interpretation
+
+- Differential pair is barely active  
+- Small input causes only small current change  
+- System is in **weak inversion / near cutoff region**
+
+---
+
+
+
+
+## Transient Analysis at VCM(max)
+
+---
+
+### Condition
+
+The input common-mode voltage is set to its maximum value:
+
+VCM(max) ≈ 0.53 V  
+
+---
+
+### Observed Output Behavior
+
+- Output waveform is sinusoidal  
+- Signal is centered near upper supply (~0.9 V)  
+- Small amplitude variation is observed  
+- No distortion is present  
+
+---
+
+### Justification
+
+At VCM(max):
+
+<img width="1919" height="460" alt="image" src="https://github.com/user-attachments/assets/69dd3bf1-0d4b-4aa0-abbe-2e1d2ae7b4ae" />
+
+
+- PMOS transistors (M3, M4) operate at the edge of saturation  
+- Condition:
+  VSD ≈ VOV  
+
+- Any further increase in VCM would push PMOS into linear region  
+
+---
+
+### Effect on Circuit Operation
+
+- Output node cannot discharge effectively  
+- Voltage remains close to VDD  
+- Gain reduces due to reduced output resistance  
+
+---
+
+### Key Observation
+
+- Limited output swing  
+- Reduced gain  
+- Stable sinusoidal waveform  
+
+---
+
+
+
+
+
+
+
+
+
+
+# Differential Amplifier — Circuit Comparison 
+
+**Course:** Linear Integrated Circuits (LIC) Lab
+**Technology:** TSMC 180 nm | **Channel Length:** L = 480 nm
+**Supply:** VDD = +0.9 V, VSS = −0.9 V | **Power Budget:** P ≤ 1.8 mW
+
+---
+
+## Circuit Descriptions
+
+| | Circuit 1 | Circuit 2 | Circuit 3 |
+|---|---|---|---|
+| **Load type** | Resistors (R₁, R₂) | PMOS current mirror (M3, M4) | PMOS mirror + C_L = 10 pF |
+| **Transistors** | M1, M2 (NMOS) + tail current source | M1, M2 (NMOS) + M3, M4 (PMOS) + M5 (tail) | Same as C2, with capacitive load |
+| **Tail current source** | Ideal current source (V3) | M5 (NMOS, in saturation) | M5 (NMOS, in saturation) |
+
+---
+
+## 1. Power Comparison
+
+> **Design constraint:** P ≤ 1.8 mW
+
+| Parameter | Circuit 1 | Circuit 2 | Circuit 3 |
+|---|---|---|---|
+| **VDD − VSS** | 1.8 V | 1.8 V | 1.8 V |
+| **Tail current (I_SS)** | 1 mA | 1 mA | 1 mA |
+| **Each branch current (I_D)** | 0.5 mA | 0.5 mA | 0.5 mA |
+| **Total power consumed** | **1.8 mW** | **1.8 mW** | **1.8 mW** |
+| **Within spec?** | ✓ Yes | ✓ Yes | ✓ Yes |
+
+**Key observation:** All three circuits consume identical DC power of 1.8 mW because the tail current and supply voltage are unchanged across all configurations. The type of load (resistive vs active) does not affect static power dissipation.
+
+---
+
+## 2. Gain Comparison
+
+### Gain Formula
+
+| Parameter | Circuit 1 | Circuit 2 | Circuit 3 |
+|---|---|---|---|
+| **Gain formula** | A_d = g_m × R_D | A_d = g_m × (r_o2 ‖ r_o4) | A_d = g_m × (r_o2 ‖ r_o4) |
+| **Mid-band gain (linear)** | Low (~g_m·R_D) | **~1.9 V/V** | **~1.9 V/V** |
+| **Mid-band gain (dB)** | Lower | **5.55 dB** | **5.55 dB** |
+| **Theoretical gain (dB)** | — | ~6 dB | ~6 dB |
+| **Deviation from theory** | — | ~0.45 dB | ~0.45 dB |
+
+### Why Circuit 2 & 3 have higher gain
+
+- Resistive load (C1): drain resistance R_D is limited in value to avoid pushing transistors into triode. Gain is bounded.
+- Active mirror load (C2, C3): replaces R_D with the parallel combination of NMOS output resistance r_o2 and PMOS output resistance r_o4. This is significantly larger than a physical resistor, giving much higher gain.
+
+### Transient Gain (small-signal, from simulation)
+
+| Parameter | Circuit 1 | Circuit 2 | Circuit 3 |
+|---|---|---|---|
+| **Differential input (V_id)** | 20 mV peak | 20 mV peak | 20 mV peak |
+| **Output swing (V_out,pp)** | Very small (nV range) | ~2.4 mV | Slightly reduced (CL effect) |
+| **Calculated A_v** | ≈ negligible | **0.12** (single-ended) | Lower due to pole |
+
+> Note: The transient gain of 0.12 is for single-ended output. Full differential output (V_out1 − V_out2) would yield higher effective gain.
+
+---
+
+## 3. Input Swing Comparison
+
+### Common-Mode Input Range (V_CM)
+
+| Parameter | Circuit 1 | Circuit 2 | Circuit 3 |
+|---|---|---|---|
+| **V_CM(min)** | −0.334 V | −0.34 V | −0.34 V |
+| **V_CM(max)** | **+0.366 V** | **+1.032 V** | **+1.032 V** |
+| **Total CM swing** | **~0.70 V** | **~1.37 V** | **~1.37 V** |
+
+### V_CM(min) Derivation (all circuits)
+
+```
+Condition: NMOS input pair just turns ON → VGS = VT
+
+V_CM(min) = V_P + V_T
+           = −0.7 + 0.366
+           = −0.334 V  (C1) / −0.34 V (C2, C3 from simulation V_S)
+```
+
+### V_CM(max) Derivation
+
+**Circuit 1** — limited by NMOS saturation condition:
+```
+VDS = VOV → VCM(max) = VD + VT = 0 + 0.366 = +0.366 V
+```
+
+**Circuit 2 & 3** — limited by PMOS load saturation condition:
+```
+V_CM(max) = VDD − V_ov(PMOS) + V_T(NMOS)
+           = 0.9 − 0.234 + 0.366
+           = +1.032 V
+```
+
+The PMOS active load gives ~2× wider common-mode input swing compared to resistive load.
+
+### Linear Differential Input Swing (all circuits)
+
+For linear (undistorted) operation, the differential input must satisfy:
+
+```
+V_id < √2 × V_OV
+```
+
+| Condition | MOSFET behaviour | Output |
+|---|---|---|
+| V_id < √2·V_OV | Both M1, M2 in saturation, current shared equally | Clean sinusoidal output |
+| V_id > √2·V_OV | One MOSFET enters cutoff, other carries full current | Distorted, clipped output |
+
+---
+
+## 4. Bandwidth & Frequency Response Comparison
+
+| Parameter | Circuit 1 | Circuit 2 | Circuit 3 |
+|---|---|---|---|
+| **Dominant pole formula** | 1 / (2π·R_D·C_par) | 1 / (2π·r_out·C_par) | 1 / (2π·r_out·(C_par + C_L)) |
+| **Approximate f_−3dB** | Higher (lower r_out) | ~1–5 Hz | < 1 Hz |
+| **Roll-off slope** | −20 dB/decade | −20 dB/decade | −20 dB/decade |
+| **Bandwidth trade-off** | Wide BW, lower gain | Narrow BW, higher gain | Narrowest BW, same gain as C2 |
+
+---
+
+## 5. Stability & Phase Margin
+
+| Parameter | Circuit 1 | Circuit 2 | Circuit 3 |
+|---|---|---|---|
+| **Phase at low freq** | ~−180° | **−194.8°** | Worse than C2 |
+| **Excess phase** | Minimal | ~14.8° | > 14.8° |
+| **Phase margin (open-loop)** | Positive | **~−14.8° (unstable)** | More negative |
+| **Frequency compensation needed?** | No | Yes (Miller cap) | Yes (strongly needed) |
+
+> The negative phase margin in Circuits 2 and 3 means they will oscillate if placed in a unity-gain feedback loop without frequency compensation.
+
+---
+
+## 6. DC Operating Point Comparison
+
+| Parameter | Circuit 1 | Circuit 2 | Circuit 3 |
+|---|---|---|---|
+| **V_out1 (DC)** | ≈ 0 V | ≈ 7.1 mV | ≈ 7.1 mV |
+| **V_out2 (DC)** | ≈ 0 V | ≈ 7.1 mV | ≈ 7.1 mV |
+| **V_od = V_out1 − V_out2** | 0 V | 0 V | 0 V |
+| **V_S (source node)** | −0.707 V | −0.695 V | −0.695 V |
+| **I_D1 = I_D2** | 0.5 mA | 0.5 mA | 0.5 mA |
+| **Symmetry** | ✓ Balanced | ✓ Balanced | ✓ Balanced |
+
+---
+
+## 7. Behaviour at Boundary Conditions
+
+### At V_CM(min)
+
+| Observation | All Circuits |
+|---|---|
+| **V_GS ≈ V_T** | Transistor barely ON |
+| **V_ov ≈ 0** | Transconductance g_m ≈ 0 |
+| **Output** | Flat — no amplification |
+| **Conclusion** | Amplifier non-functional at lower limit |
+
+### At V_CM(max)
+
+| Observation | All Circuits |
+|---|---|
+| **V_DS = V_ov** | At saturation–triode boundary |
+| **Gain** | Collapses as MOSFET enters triode |
+| **Output** | No amplification, waveform flat |
+| **Conclusion** | Amplifier non-functional at upper limit |
+
+---
+
+## 8. Overall Comparison Summary
+
+| Feature | Circuit 1 | Circuit 2 | Circuit 3 |
+|---|---|---|---|
+| **Load** | Resistive | Active (PMOS mirror) | Active + C_L |
+| **Power** | 1.8 mW | 1.8 mW | 1.8 mW |
+| **Gain (dB)** | Lower | 5.55 dB | 5.55 dB |
+| **CM input range** | 0.70 V | 1.37 V | 1.37 V |
+| **Bandwidth** | Wide | Narrow (~1–5 Hz) | Narrowest |
+| **Phase margin** | Stable | Unstable (−14.8°) | Worse |
+| **CMRR** | Moderate | High | High |
+| **Complexity** | Simple | Moderate | Moderate |
+| **Key advantage** | Wide BW, simple design | High gain, wide CM range | Drives capacitive loads |
+| **Key drawback** | Low gain, limited CM swing | Needs frequency compensation | Lowest BW |
+| **Best suited for** | General amplification | High-gain op-amp input stage | Capacitive load driving |
+
+---
+
+## 9. Key Formulas Reference
+
+| Formula | Expression |
+|---|---|
+| Differential gain | A_d = g_m · R_D (C1) or g_m · (r_o2 ‖ r_o4) (C2, C3) |
+| Transconductance | g_m = 2·I_D / V_ov |
+| Output resistance | r_o = 1 / (λ·I_D) |
+| CM input min | V_CM(min) = V_P + V_T |
+| CM input max (C1) | V_CM(max) = V_D + V_T |
+| CM input max (C2,C3) | V_CM(max) = VDD − V_ov(PMOS) + V_T(NMOS) |
+| Linear input condition | V_id < √2 · V_OV |
+| Dominant pole | f_H = 1 / (2π · r_out · C_L) |
+
+---
